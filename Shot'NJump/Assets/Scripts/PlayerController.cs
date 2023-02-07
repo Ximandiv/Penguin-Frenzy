@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed;
-    public float jumpPower;
+    public float jumpPower = 20f;
     public int amountAmmo;
     public GameObject bullets;
     public GameObject hand;
