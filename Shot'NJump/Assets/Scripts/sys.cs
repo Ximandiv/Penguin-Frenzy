@@ -13,6 +13,6 @@ public class sys : MonoBehaviour
     {
         bruh2 = xd.amountAmmo;
         bruh = bruh2.ToString();
-        text.text = "Ammo: " + bruh;
+        text.text = "x" + bruh;
     }
 }

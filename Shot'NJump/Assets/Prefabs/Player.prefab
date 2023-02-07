@@ -328,7 +328,7 @@ MonoBehaviour:
   bullets: {fileID: 1570441833096203073, guid: c3309d105e57a9f48a935539f647bdfe, type: 3}
   hand: {fileID: 6819414733091563532}
   firePoint: {fileID: 6819414732728278422}
-  amountAmmoLocal: {fileID: 0}
+  amountAmmoLocal: {fileID: 1148760970729256503, guid: 57c713cafb95fec4e93de9ffb75eab21, type: 3}
   gunShot: {fileID: 2160516322142130831}
   dirX: 0
   rb: {fileID: 6819414732780507749}

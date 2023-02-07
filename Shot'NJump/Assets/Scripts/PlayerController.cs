@@ -10,8 +10,8 @@ public class PlayerController : MonoBehaviour
     public GameObject bullets;
     public GameObject hand;
     public Transform firePoint;
-    public AmmoPickup amountAmmoLocal;
     public sound gunShot;
+    public AudioSource pickupAmmo;
 
     public float dirX;
     private bool isFacingRight;
@@ -83,8 +83,9 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.tag == "Ammo")
         {
-            amountAmmo += 1;
+            amountAmmo += 3;
             Destroy(collision.gameObject);
+            pickupAmmo.Play();
         }
     }
 
