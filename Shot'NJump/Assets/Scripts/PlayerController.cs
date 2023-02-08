@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public Transform firePoint;
     public sound gunShot;
     public AudioSource pickupAmmo;
+    public anima anima;
+    public bool shooting = false;
 
     public float dirX;
     private bool isFacingRight;
@@ -28,7 +30,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    public void Update()
     {
         if (isDashing)
         {
@@ -41,6 +43,7 @@ public class PlayerController : MonoBehaviour
             amountAmmo -= 1;
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             gunShot.gunshot.Play();
+            shooting = true;
         }
         if (Input.GetKeyDown(KeyCode.E) && canDash)
         {
@@ -50,12 +53,15 @@ public class PlayerController : MonoBehaviour
         {
             Application.Quit();
         }
+        anima.animationUpdate1();
     }
 
     private void shoot()
     {
         Instantiate(bullets, firePoint.position, firePoint.rotation);
     }
+
+
 
     private void FixedUpdate()
     {
