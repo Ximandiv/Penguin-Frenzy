@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public bool shooting = false;
 
     public float dirX;
+    public float recoilForce;
     private bool isFacingRight;
     private bool canDash = true;
     private bool isDashing;
@@ -41,7 +42,7 @@ public class PlayerController : MonoBehaviour
         {
             shoot();
             amountAmmo -= 1;
-            rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+            //rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             gunShot.gunshot.Play();
             shooting = true;
         }
@@ -59,6 +60,11 @@ public class PlayerController : MonoBehaviour
     private void shoot()
     {
         Instantiate(bullets, firePoint.position, firePoint.rotation);
+
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 direction = (Vector2)transform.position - mousePos;
+        direction = direction.normalized;
+        rb.AddForce(direction * recoilForce);
     }
 
 

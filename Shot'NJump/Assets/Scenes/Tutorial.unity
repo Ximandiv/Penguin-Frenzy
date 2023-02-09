@@ -4824,6 +4824,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2008320654}
     - target: {fileID: 6819414732780507750, guid: 40881c49ebd5d65478042e0f9cc207ef, type: 3}
+      propertyPath: recoilForce
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6819414732780507750, guid: 40881c49ebd5d65478042e0f9cc207ef, type: 3}
       propertyPath: amountAmmoLocal
       value: 
       objectReference: {fileID: 0}
