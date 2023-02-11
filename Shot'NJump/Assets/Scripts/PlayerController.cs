@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     public float dirX;
     public float recoilForce;
-    private bool isFacingRight;
+    public bool isFacingRight;
     private bool canDash = true;
     private bool isDashing;
     private float dashingPower = 23f;
@@ -61,8 +61,7 @@ public class PlayerController : MonoBehaviour
     {
         Instantiate(bullets, firePoint.position, firePoint.rotation);
 
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = (Vector2)transform.position - mousePos;
+        Vector2 direction = (Vector2)transform.position - (Vector2)firePoint.position;
         direction = direction.normalized;
         rb.AddForce(direction * recoilForce);
     }
@@ -81,14 +80,13 @@ public class PlayerController : MonoBehaviour
 
     public void Flip()
     {
-        if (isFacingRight && dirX > 0f || !isFacingRight && dirX < 0f)
+        if (dirX > 0f && isFacingRight || dirX < 0f && !isFacingRight)
         {
             isFacingRight = !isFacingRight;
-
-            transform.Rotate(0f, 180f, 0f);
-
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
