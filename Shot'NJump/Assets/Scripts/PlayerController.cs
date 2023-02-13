@@ -19,10 +19,13 @@ public class PlayerController : MonoBehaviour
     public float dirX;
     public float recoilForce;
     public bool isFacingRight;
+    private bool canShoot = true;
     private bool canDash = true;
     private bool isDashing;
-    private float dashingPower = 23f;
+    private bool isShooting;
+    public float dashingPower = 23f;
     private float dashingTime = 0.2f;
+    private float shootingTime = 0.3f;
     private float dashingCD = 0.5f;
 
     public Rigidbody2D rb;
@@ -38,14 +41,18 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
+        if (isShooting)
+        {
+            return;
+        }
         dirX = Input.GetAxis("Horizontal");
         if (Input.GetButtonDown("Fire1") && amountAmmo > 0)
         {
-            shoot();
-            amountAmmo -= 1;
-            //rb.velocity = new Vector2(rb.velocity.x, jumpPower);
-            gunShot.gunshot.Play();
-            shooting = true;
+            if(canShoot == true)
+            {
+                StartCoroutine(shoot());
+                shooting = true;
+            }
         }
         if (Input.GetKeyDown(KeyCode.E) && canDash)
         {
@@ -62,13 +69,19 @@ public class PlayerController : MonoBehaviour
         anima.animationUpdate1();
     }
 
-    private void shoot()
+    private IEnumerator shoot()
     {
+        canShoot = false;
+        isShooting = true;
+        gunShot.gunshot.Play();
         Instantiate(bullets, firePoint.position, firePoint.rotation);
-
+        amountAmmo -= 1;
         Vector2 direction = (Vector2)transform.position - (Vector2)firePoint.position;
         direction = direction.normalized;
         rb.AddForce(direction * recoilForce);
+        yield return new WaitForSeconds(shootingTime);
+        isShooting = false;
+        canShoot = true;
     }
 
 
@@ -79,7 +92,11 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-        rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
+        if (isShooting)
+        {
+            return;
+        }
+        rb.velocity = new Vector2(dirX * moveSpeed * Time.deltaTime, rb.velocity.y);
         Flip();
     }
 
