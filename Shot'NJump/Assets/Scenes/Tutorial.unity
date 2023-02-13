@@ -1553,7 +1553,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 784188942}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.5499983, y: 1, z: 0}
+  m_LocalPosition: {x: 5.4299974, y: 0.16000003, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 84986872}
@@ -1656,6 +1656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 519420031}
+  shotgunSprite: {fileID: 84986874}
 --- !u!1 &795999381
 GameObject:
   m_ObjectHideFlags: 3
@@ -1711,8 +1712,8 @@ MonoBehaviour:
   m_ScreenX: 0.5
   m_ScreenY: 0.5
   m_CameraDistance: 10
-  m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 0
+  m_DeadZoneWidth: 0.1
+  m_DeadZoneHeight: 0.03
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
   m_SoftZoneWidth: 0.8
@@ -5033,12 +5034,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 784188943}
     - target: {fileID: 6819414732780507750, guid: 40881c49ebd5d65478042e0f9cc207ef, type: 3}
+      propertyPath: amountAmmo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6819414732780507750, guid: 40881c49ebd5d65478042e0f9cc207ef, type: 3}
       propertyPath: pickupAmmo
       value: 
       objectReference: {fileID: 2008320654}
     - target: {fileID: 6819414732780507750, guid: 40881c49ebd5d65478042e0f9cc207ef, type: 3}
       propertyPath: recoilForce
-      value: 1000
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 6819414732780507750, guid: 40881c49ebd5d65478042e0f9cc207ef, type: 3}
       propertyPath: amountAmmoLocal

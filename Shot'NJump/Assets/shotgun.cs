@@ -7,6 +7,7 @@ public class shotgun : MonoBehaviour
     Vector3 mousePosition;
     [SerializeField] private Camera mainCamera;
     private int direction = 1;
+    public SpriteRenderer shotgunSprite;
     void Start()
     {
 
@@ -29,13 +30,20 @@ public class shotgun : MonoBehaviour
             )
         {
             transform.right = mousePosition - transform.position;
+            shotgunSprite.flipY = false;
+
+
+
         }
         else
         {
 
             if ((mousePosition.x < transform.position.x && direction < 0))
             {
-                transform.right = (mousePosition - transform.position) * -1;
+                transform.right = (mousePosition - transform.position);
+                shotgunSprite.flipY = true;
+
+
             }
         }
     }

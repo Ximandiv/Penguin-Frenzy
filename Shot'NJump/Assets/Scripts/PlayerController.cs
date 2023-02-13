@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -54,6 +55,10 @@ public class PlayerController : MonoBehaviour
         {
             Application.Quit();
         }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(0);
+        }
         anima.animationUpdate1();
     }
 
@@ -83,9 +88,7 @@ public class PlayerController : MonoBehaviour
         if (dirX > 0f && isFacingRight || dirX < 0f && !isFacingRight)
         {
             isFacingRight = !isFacingRight;
-            Vector3 localScale = transform.localScale;
-            localScale.x *= -1f;
-            transform.localScale = localScale;
+            transform.Rotate(0, 180, 0);
         }
     }
 
